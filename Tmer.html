@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Mijn Animatie Effect</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <style>
+        body {
+            background-image: url(https://img0.etsystatic.com/000/0/5434618/il_fullxfull.177222492.jpg);
+            background-size: 2rem;
+        }
+
+        html, body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            border: 0.25rem solid black;
+            width: 20rem;
+            height: 20rem;
+            justify-content: center;
+            margin: auto;
+            font-family: "Indie Flower";
+            font-size: 3rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, red, green, blue);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<main id ="bol">
+    <div id="subject">Dit is mijn div</div>
+</main>
+<script>
+    var br = 0;
+    function anime() {
+
+        var s = document.getElementById("bol");
+        s.style.background = "red";
+        s.style.backgroundColor = "yellow";
+        br += 0.5;
+        s.style.borderRadius = br + "%";
+
+        if(br < 50) {
+            setTimeout(anime, 20);
+        }
+    }
+
+    anime();
+
+
+
+
+    /* var br = "border-radius";
+    function (br){
+
+    }
+
+    var br = 50 + "%" ;
+    function setBorderRatius { br
+        while
+        {br>=10%, br--}
+    };
+*/
+</script>
+</body>
+</html>

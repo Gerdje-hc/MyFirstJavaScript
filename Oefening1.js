@@ -37,6 +37,15 @@ for (var i = 1; i<100; i++) {
 }
 
 
+function myFunction() {
+    var x = document.getElementById("demo");
+    x.style.fontSize = "35px";
+    x.style.color = "red";
+}
+
+
+
+
 
 
 
