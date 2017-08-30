@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id = "myButton" onclick = "showMessage()">Click button</button>
+
+<script>
+    var b = document.getElementById('myButton');
+    b.addEventListener("click", showMessage);
+    function showMessage (){
+    alert ("Peekaboo!");
+    }
+
+    function onMouseDown(event) {
+        console.log(screenX,screenY);  // geeft X en Y van de volledige screen - global
+        // https://developer.mozilla.org/en-US/docs/Web/Events/mousedown
+        alert(event.clientX + " " + event.clientY);  //
+
+    }
+    b.addEventListener("mousedown", onMouseDown, true);
+
+</script>
+
+</body>
+</html>
