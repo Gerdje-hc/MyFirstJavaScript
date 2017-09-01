@@ -4,9 +4,9 @@ var film1 = {
     "year": "1994",
     "image":"legendsOffTheFall.jpg",
     "characters": [
-        {"name": "Tristan Ludlow", "actor": {firstname: "Brad", lastname: "Pitt"}},
-        {"name": "Colonel Ludlow", "actor": {firstname: "Anthony", lastname: "Hopkins"}},
-        {"name": "Alfred Ludlow", "actor": {firstname: "Aidan", lastname: "Quin"}}
+        {"name": "Tristan Ludlow", "actor": {"firstname": "Brad", "lastname": "Pitt"}},
+        {"name": "Colonel Ludlow", "actor": {"firstname": "Anthony", "lastname": "Hopkins"}},
+        {"name": "Alfred Ludlow", "actor": {"firstname": "Aidan", "lastname": "Quin"}}
     ],
 
     "users": [
@@ -29,9 +29,9 @@ var film2 = {
     "year": "2017",
     "image": "temple.jpg",
     "characters": [
-        {"name": "Ryo", "actor": {firstname: "Naoto", lastname: "Takenaka"}},
-        {"name": "Ittoku", "actor": {firstname: "Asahi", lastname: "Uchida"}},
-        {"name": "Christopher", "actor": {firstname: "Logan", lastname: "Hufman"}}
+        {"name": "Ryo", "actor": {"firstname": "Naoto", lastname: "Takenaka"}},
+        {"name": "Ittoku", "actor": {"firstname": "Asahi", lastname: "Uchida"}},
+        {"name": "Christopher", "actor": {"firstname": "Logan", lastname: "Hufman"}}
     ],
 
     "users": [
@@ -48,4 +48,4 @@ var film2 = {
     ]
 };
 
-document.write("<h1>" + film1.title + "</h1>")
+document.write("<h1>" + film1.title + "</h1>");

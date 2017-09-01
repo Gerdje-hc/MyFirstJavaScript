@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+            <!-- copy deze link van bootstrap.com -->
+</head>
+<body>
+
+<div class="container">
+    <h2>Mijn Pagina</h2>
+     <button id = "mijnKnop" class = " btn-primary">Data inladen van de server</button>
+    <div id = "output">  </div>
+</div>
+<script>
+     var b = document.getElementById ("mijnKnop");
+     b.addEventListener("click", function (e) {
+
+         var xhr = new XMLHttpRequest();
+         xhr.open("GET", "film.json");      <!-- String request sturen naar Google met javascript  -->
+         xhr.addEventListener("readystatechange", function () {   // if something changes
+             if(xhr.readyState === 4){
+                 if(xhr.status === 200) {
+                     // all good
+                     var f = JSON.parse(xhr.responseText);
+                     var output = document.getElementById("output");
+                     output.innerHTML += "<h1>" + f.title + "</h1>";
+                     var s = "<table>";
+                     for (var c of f.characters) {
+                         s += "<tr><td>" + c.name + "</td></tr>";
+                     }
+                     s += "</table>";
+                     output.innerHTML += s;  // output van de tabel
+                 } else {
+                     alert("Failled");
+                 }
+             }
+
+         })
+
+         xhr.send();
+
+
+     })
+    var  coords = document.getElementById("output" );
+     navigator.geolocation.getCurrentPosition(showPosition, errorHandler, {
+         enableHighAccurancy:true,
+         maximumAge: 1000,
+         timeout:30000,
+     });
+     function showPosition(position) {
+         coords.innerHTML = position.coords.latitude + " " + position.coords.longitude;
+     }
+     function errorHandler(error) {
+         coords.innerHTML = "Error " + error.code + "" + error.message;
+     }
+
+
+</script>
+
+</body>
+</html>
