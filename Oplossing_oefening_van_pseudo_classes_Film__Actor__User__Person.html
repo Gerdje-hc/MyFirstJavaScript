@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+
+    </head>
+    <body>
+        <script>
+
+            function Person(firstname, lastname) {
+                this.firstname = firstname;
+                this.lastname = lastname;
+            }
+            Person.prototype.fullname = function() {
+                return this.firstname + " " + this.lastname;
+            };
+
+            function Actor(firstname, lastname) {
+                Person.call(this, firstname, lastname);
+            }
+            Actor.prototype = Object.create(Person.prototype);
+
+            function User(firstname, lastname, alias) {
+                Person.call(this, firstname, lastname);
+                this.alias = alias;
+            }
+            User.prototype = Object.create(User.prototype);
+
+            function Film(title, rating, runlength) {
+                this.title = title;
+                this.rating = rating;
+                this.runlength = runlength;
+
+                this.comments = [];
+                this.characters = [];
+            }
+
+            Film.prototype.setDescription = function(description) {
+                this.description = description
+            };
+
+            Film.prototype.addComment = function(user, text) {
+                this.comments.push({
+                    user: user,
+                    text: text
+                });
+            };
+
+            Film.prototype.addCharacter = function(actor, name) {
+                this.characters.push({
+                    actor: actor,
+                    name: name
+                });
+            };
+
+            // Usage part:
+            var f = new Film("The Big Lebowski", 5, 142);
+            f.setDescription("Film about a dude that likes to play bowling");
+
+            f.addComment(new User("Jimi", "Hendrix", "jguitar"), "Cool movie, inspired me to write songs");
+            f.addComment(new User("Jon", "Snow", "raven"), "I literally 'know nothing' about bowling");
+            f.addComment(new User("Bob", "Jenkins", "jbob"), "Not liked it. Humor is not that good");
+            f.addComment(new User("Bob", "Jenkins", "jbob"), "Not liked it. Humor is not that good");
+
+            f.addCharacter(new Actor("Jeff", "Bridges"), "The Dude");
+            f.addCharacter(new Actor("John", "Goodman"), "Walther");
+            f.addCharacter(new Actor("Steve", "Buscemi"), "Donny");
+
+            document.write("<h1>" + f.title + "</h1>");
+            document.write("<p>" + f.description + "</p>");
+            document.write("<table>");
+            for (var c in f.characters) {
+                document.write("<tr><td>" + f.characters[c].actor.fullname() + "</td><td>" + f.characters[c].name + "</td></tr>");
+            }
+            document.write("</table>");
+
+        </script>
+    </body>
+</html>
