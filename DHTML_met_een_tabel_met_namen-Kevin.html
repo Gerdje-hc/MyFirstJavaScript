@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                    </tr>
+                </thead>
+                <tbody id="persons">
+                    <!-- Will be added by JavaScript -->
+                </tbody>
+            </table>
+
+            <form class="form-inline">
+                <div class="form-group">
+                    <input class="form-control" type="text" id="myName"/>
+                </div>
+                <button type="button" style="margin-left: 1rem;" id="myButton" class="btn btn-warning">Voeg naam toe</button>
+            </form>
+
+        </div>
+
+        <script>
+            var button = document.getElementById("myButton");
+            var nameField = document.getElementById("myName");
+            var table = document.getElementById("persons");
+
+            button.addEventListener("click", function() {
+                var name = nameField.value;
+
+                var firstSpaceIndex = name.indexOf(" ");
+
+                var firstname = name.substring(0, firstSpaceIndex);
+                var lastname = name.substring(firstSpaceIndex);
+
+                  // Moeilijke manier:
+//                var row = document.createElement("tr");
+//                var fn = document.createElement("td");
+//                fn.appendChild(document.createTextNode(firstname));
+//
+//                var ln = document.createElement("td");
+//                ln.appendChild(document.createTextNode(lastname));
+//
+//                row.appendChild(fn);
+//                row.appendChild(ln);
+//                table.appendChild(row);
+
+                // Makkelijkere manier (en ook veilig sinds HTML5)
+                table.innerHTML += "<tr><td>" + firstname + "</td><td>" + lastname + "</td></tr>";
+                nameField.value = "";
+
+
+
+
+            });
+        </script>
+    </body>
+</html>

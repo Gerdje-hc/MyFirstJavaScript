@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td, th {
+            border: 1px solid black;
+            padding: 0.5rem;
+            font-family: sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var film = {
+        "title": "Tulip Fever",
+        "rating": 4,
+        "runlength": 107,
+        "description": "An artist falls for a young married woman while he's commissioned to paint her portrait during the Tulip mania of 17th century Amsterdam.",
+        "units": [3, 7, 8],
+        "characters": [
+            {name: "Jack Sparrow", actor: {firstname: "Johny", lastname: "Depp"}},
+            {name: "Tristan Ludlow", actor: {firstname: "Brad", lastname: "Pitt"}},
+            {name: "Elisabeth", actor: {firstname: "Keira", lastname: "Nightly"}},
+            {name: "Pirate #1", actor: {firstname: "Bob", lastname: "Jenkins"}},
+            {name: "Pirate #2", actor: {firstname: "Janis", lastname: "Leeroy"}}
+        ],
+        "comments": [
+            {"user": "Happy Hippo", "text": "Good movie"},
+            {"user": "James Dean", "text": "All in for the pastafarians"},
+            {"user": "Lanis Jacobs", "text": "Nothing to say really"},
+            {"user": "Bobby Redding", "text": "This is awesome"},
+            {"user": "Jeniffer Brown", "text": "Whow dude!"},
+            {"user": "Trace Hilltop", "text": "Not too bad"},
+
+            {"user": {
+                "alias": "Happy Hippo",
+                "firstname": "John",
+                "lastname": "Doe",
+                "text": "Good movie"
+            }},
+        ]
+    };
+
+    document.write("<h1>" + film.title + "</h1>");
+    document.write("<p>" + film.description + "</p>");
+    document.writeln("<table>");
+    document.writeln("<thead><tr><th>Character</th><th>Actor</th></tr></thead>");
+    document.write("<tbody>");
+    for(var c of film.characters) {
+        document.write("<tr>");
+        document.write("<td>" + c.name + "</td>");
+        document.write("<td>" + c.actor.firstname + " " + c.actor.lastname + "</td>");
+        document.write("</tr>");
+    }
+    document.write("</tbody>");
+    document.writeln("</table>");
+
+</script>
+</body>
+</html>
