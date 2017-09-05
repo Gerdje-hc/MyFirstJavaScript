@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Remember me?</title>
+        <style type="text/css">
+            #welcomeMessage {
+                margin-bottom: 25px;
+                padding: 25px;
+                border: 1px dashed black;
+                font-family: sans-serif;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Remember me?</h1>
+        <p>This example can be viewed in all major browsers!</p>
+
+        <div id="welcomeMessage"></div>
+        
+        <form>
+            <input id="firstName" placeholder="Enter first name here"/>
+            <input id="lastName" placeholder="Enter last name here"/>
+            <input id="userProfileButton" type="button" value="Who are you?">
+        </form>
+
+        <script type="text/javascript">
+            document.getElementById("userProfileButton").addEventListener("click", whoAreYou);
+            var welcomeMessageDiv = document.getElementById("welcomeMessage");
+
+            window.addEventListener("load", function() {
+                if(localStorage.userProfile != null) {
+                    var userProfile = JSON.parse(localStorage.userProfile);
+                    welcomeMessageDiv.innerHTML = "Welcome back, " + buildName(userProfile);
+                } else {
+                    welcomeMessageDiv.innerHTML = "Hey stranger, haven't seen you around before...";
+                }
+            });
+
+            function whoAreYou() {
+                var userProfile = {
+                    firstName: document.getElementById("firstName").value,
+                    lastName: document.getElementById("lastName").value
+                };
+                localStorage.userProfile = JSON.stringify(userProfile);
+                welcomeMessageDiv.innerHTML = "Thanks for letting us know you are " +  buildName(userProfile);
+            }
+
+            function buildName(userProfile) {
+                return userProfile.firstName + " " + userProfile.lastName;
+            }
+        </script>
+    </body>
+</html>
